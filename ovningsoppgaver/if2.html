@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If-elseif</title>
+</head>
+<body>
+    <p id="utskrift"></p>
+    <p></p>
+
+
+
+    <script>
+        const age = 18
+        let utskrift = ""
+
+        if(age < 18) {
+            document.getElementById("utskrift").innerHTML = "Du er ikke myndig."
+
+        } else if(age >= 18 && age <= 62 ) {
+            document.getElementById("utskrift").innerHTML = "Du er myndig og klar for studier eller arbeidslivet."
+        } if (age > 62) {
+            document.getElementById("utskrift").innerHTML = "Du er pensjonistklar."
+        }
+    </script>
+    
+</body>
+</html>

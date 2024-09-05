@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bettinget logikk</title>
+</head>
+<body>
+    <p id="name"></p>
+    <p id="utskrift"></p>
+
+    <script>
+        const name = "Nikolai"
+        const lastname = "Olsen"
+        let utskrift = "#"
+
+        if (name === "Nikolai" && lastname ==="Olsen"){
+            document.getElementById("name").innerHTML = "Mitt navn er Nikolai Olsen"
+        } else{
+            document.getElementById("utskrift").innerHTML = "jeg heter ikke Nikolai Olsen"
+        }
+
+        console.log()
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 4 årstall</title>
+</head>
+<body>
+    <ul id="events"></ul>
+
+    <script>
+        const yearsarray = [1066, 1564, 1455, 1346, 1215];
+        const eventHTML = ""
+        yearsarray.sort(function(a, b) {return b - a})
+
+        yearsarray.map(year => document.getElementById("events").innerHTML += `<li>${year}</li>`)
+
+
+        console.log(yearsarray)
+    </script>
+</body>
+</html>

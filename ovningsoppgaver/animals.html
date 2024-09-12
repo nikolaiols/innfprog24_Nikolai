@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> oppgave 2 Animals </title>
+</head>
+<body>
+    <p id="setning"></p>
+
+    <script>
+        const dyrearray = ["Løve", "isbjørn", "ørn", "elefant", "tiger", "delfin", "ulv", "sjiraff", "panda", "krokodille"];
+        const animalarray= ["Lion", "Polar bear", "Eagle", "Elephant", "Tiger", "Dolphin", "Wolf", "Giraffe", "Panda", "Crocodile"];
+        const tekst = `${dyrearray[0]} er et dyr. Det heter ${animalarray[0]} på engelsk. ${dyrearray[7]} er også et dyr. Det heter ${animalarray[7]} på engelsk.`;
+
+        document.getElementById("setning").innerHTML = tekst;
+    </script>
+</body>
+</html>

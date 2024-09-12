@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 3 dyr sortert</title>
+</head>
+<body>
+    <p id="utskrift"></p>
+    <p id="antall_dyr"></p>
+
+
+    <script>
+        const animalarray = ["Løve", "isbjørn", "ørn", "elefant", "tiger", "delfin", "ulv", "sjiraff", "panda", "krokodille"];
+        const setning = `her er en liste med noen dyr, for eksempel ${animalarray[3]} og ${animalarray[7]}`;
+        const antall_dyr = 0
+        animalarray.push("Rotte", "Mus")
+        animalarray.sort()
+
+        document.getElementById("utskrift").innerHTML = setning
+        document.getElementById("antall_dyr").innerHTML = `Antall dyr: ${animalarray.length}`
+        console.log(animalarray)
+        console.log(antall_dyr)
+    </script>
+</body>
+</html>

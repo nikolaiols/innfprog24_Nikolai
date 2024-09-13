@@ -274,7 +274,7 @@
 
             //Hvis runden er vunnet, skal vi gjøre noen handlinger:
             if(rundenVunnet === true) {
-                //Skriv ut hvilken spiller som har vunnet
+                //Skriv ut hvilken spiller som har vunnet              
                 document.getElementById("playerturn").innerHTML = "Spiller " + player + " har vunnet!";
                 document.getElementById("playerturn").style.backgroundColor = "#FFD700"
                 //Gjør restart spill-knappen synlig
@@ -307,7 +307,7 @@
             // 4)
             document.getElementById("playerturn").innerHTML = 'Spiller <span id="player">1</span> (<span id="playermark">X</span>) sin tur:';
 
-               // Tilbakestill bakgrunnsfargen til playerturn til den opprinnelige fargen (ingen bakgrunn)
+               //Tilbakestiller bakgrunnsfargen til "playerturn" til den opprinnelige fargen (ingen bakgrunn)
             document.getElementById("playerturn").style.backgroundColor = "";
         }
     </script>

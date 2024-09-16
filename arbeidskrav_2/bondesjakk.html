@@ -214,7 +214,9 @@
                     //Når brikken er plassert på spillerbrettet, må vi sjekke om den - og brikkene rundt - 
                     //utgjør en vinnerkombinasjon. Denne funksjonaliteten ligger i funksjonen sjekkVinner(),
                     //siden dette er et litt større sett med handlinger og kan gi noen ulike utfall.
-                    sjekkVinner();
+                    //sjekkVinner()
+                    const myTimeout = setTimeout(sjekkVinner, 1000);
+                    
 
                 //Men, hvis cellen ikke er ledig...
                 } else {
@@ -223,27 +225,13 @@
                     return;
                 }
 
-                //Når spillerens tur er ferdig, er det neste spillers tur.
-                //Det viser vi ved å sette variabelen "player" til 2 hvis den var 1 denne turen, eller hvis den var 2, sett tilbake til 1.
-                //På samme måte må spillersymbolet veksles mellom X og O.
-                if (player === 1) {
-                    player = 2;
-                    playermark = "O";
-                } else {
-                    player = 1;
-                    playermark = "X";
-                }
-                if(spillStatus === true) {
-                    document.getElementById("player").innerHTML = player;
-                    document.getElementById("playermark").innerHTML = playermark;
-                }
+             
             //Hvis spillstatus er false, avslutter vi funksjonen uten å utføre noen handlinger.
             } else {
                 //Så returnerer vi spillet
                 return;
             }
-        }
-
+        }   
         function sjekkVinner() {
             var rundenVunnet = false;
             //Vi må sjekke etter vinner for hver brikke som plasseres på brettet.
@@ -270,19 +258,34 @@
                     rundenVunnet = true;
                     break;
                 }
+
             }
 
             //Hvis runden er vunnet, skal vi gjøre noen handlinger:
             if(rundenVunnet === true) {
-                //Skriv ut hvilken spiller som har vunnet              
+                //Skriv ut hvilken spiller som har vunnet            
                 document.getElementById("playerturn").innerHTML = "Spiller " + player + " har vunnet!";
-                document.getElementById("playerturn").style.backgroundColor = "#FFD700"
+                document.getElementById("playerturn").style.backgroundColor = "#FFD700";
                 //Gjør restart spill-knappen synlig
                 document.getElementById("newgame").style.display = "block";
                 //Sett spillstatus til false, slik at ingen spillere får plassere
                 //flere brikker på brettet - dette løses med sjekken i funksjonen spill()
                 spillStatus = false;
             }
+               //Når spillerens tur er ferdig, er det neste spillers tur.
+                //Det viser vi ved å sette variabelen "player" til 2 hvis den var 1 denne turen, eller hvis den var 2, sett tilbake til 1.
+                //På samme måte må spillersymbolet veksles mellom X og O.
+                if (player === 1) {
+                    player = 2;
+                    playermark = "O";
+                } else {
+                    player = 1;
+                    playermark = "X";
+                }
+                if(spillStatus === true) {
+                    document.getElementById("player").innerHTML = player;
+                    document.getElementById("playermark").innerHTML = playermark;
+                }    
         }
 
         //Når et spill er avsluttet, og et nytt skal begynne, må vi gjøre klar en del ting:
@@ -307,7 +310,7 @@
             // 4)
             document.getElementById("playerturn").innerHTML = 'Spiller <span id="player">1</span> (<span id="playermark">X</span>) sin tur:';
 
-               //Tilbakestiller bakgrunnsfargen til "playerturn" til den opprinnelige fargen (ingen bakgrunn)
+            //Tilbakestiller bakgrunnsfargen til "playerturn" til den opprinnelige fargen (ingen bakgrunn)
             document.getElementById("playerturn").style.backgroundColor = "";
         }
     </script>

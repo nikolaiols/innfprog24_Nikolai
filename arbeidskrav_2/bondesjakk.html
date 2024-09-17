@@ -306,6 +306,8 @@
             var celleteller = 0;
             while (celleteller < 9) {
                 document.getElementById("celle" + celleteller).innerHTML = "";
+                // Tilbakestill fargen til hvit
+                document.getElementById("celle" + celleteller).style.color = "#fff"; 
                 celleteller++;
             }
             // 2)
@@ -318,6 +320,7 @@
 
             //Tilbakestiller bakgrunnsfargen til "playerturn" til den opprinnelige fargen (ingen bakgrunn)
             document.getElementById("playerturn").style.backgroundColor = "";
+            
         }
     </script>
 </body>

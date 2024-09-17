@@ -256,6 +256,12 @@
                 //brikke3, er alle like, og vi har en vinnerkombinasjon. Da 
                 if(brikke1 === brikke2 && brikke2 === brikke3) {
                     rundenVunnet = true;
+
+                     // Endre fargen på X eller O til gul
+                    document.getElementById("celle" + vinnerKomboPlass1).style.color = "#FFD700";
+                    document.getElementById("celle" + vinnerKomboPlass2).style.color = "#FFD700";
+                    document.getElementById("celle" + vinnerKomboPlass3).style.color = "#FFD700";
+
                     break;
                 }
 

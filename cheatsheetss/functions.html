@@ -7,10 +7,38 @@
 </head>
 <body>
     
-
+    <p>Nikolai Kruge Olsen. epost: <span id="emailcontainer"></span></p>
 
     <script>
-        
+        //deklarere en funksjon
+        function myFirstFunction() {
+            console.log("jeg kjører min første funksjon :)")
+        }
+        // kjøre/kalle en funksjon
+        myFirstFunction()
+
+        //deklarer en funksjon med en parameter 
+        function printName(name){
+            console.log("jeg heter " + name)
+        }
+        printName("Nikolai")
+
+        //deklarer en funksjon med en parameter som har en standar verdi 
+        function printDefaultName(name = "ingenting enda..."){
+            console.log("jeg heter " + name)
+        }
+        printDefaultName()
+
+        //lager en funksjon med epost som link(template)
+        function createEmailLink(email){
+            if(!email){
+                return "Ikke oppgitt"
+            }
+            return `<a href="mailto:${email}">${email}</a>`
+        }
+        console.log(createEmailLink("nikolaio@hiof.no"))
+        document.getElementById("emailcontainer").innerHTML = createEmailLink("nikolaio@hiof.no")
+
     </script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alderskalkulator</title>
+</head>
+<body>
+    <h1>Regn ut din alder</h1>
+    <p>
+        <label for="birthyear">Ditt fødselsår:</label>
+        <input id="birthyear" type="number">
+    </p>
+    <p>
+        <label for="year">år for utregning</label>
+        <input id="year" type="number">
+    </p>
+    <p><button onclick="ageCalculator()">Regn ut</button></p>
+    <p id="agescentence"></p>
+
+    <script>
+        function ageCalculator(){
+            //hente årstall fra input
+            const birthyear = document.getElementById("birthyear").value
+            const year = document.getElementById("year").value
+            //regne ut alder
+            const age = year - birthyear
+            console.log(age)
+            let text = ""
+            if(year > 2024){
+                text = `I ${year} vil du være ${age} år gammel`
+            }else if(year < 2024){
+                if(age < 0){
+                    text = `i ${year} er det ${Math.abs(age)} til du blir født i ${birthyear}`
+                }else{
+                    text = `I ${year} var du ${age} år gammel`
+                }
+                 
+            }else{
+                 text = `I år er du ${age} år gammel`
+            }
+            document.getElementById("agescentence").innerHTML = text
+        }
+        
+    </script>
+</body>
+</html>

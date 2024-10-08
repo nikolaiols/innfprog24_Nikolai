@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch cheatsheet</title>
+    <style>
+        body{
+            background-color: #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #sec{
+            font-size: 160px;
+            font-family: Georgia, serif;
+            margin: 0;
+        }
+        button{
+            padding: 20px;
+        }
+        #start{
+            background-color: green;
+        }
+        #stop{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p id="sec">0</p>
+        <p>SEKUNDER</p>
+        <button id="start">START (s)</button>
+        <button id="stop" disabled>STOPP (e)</button>
+    </main>
+    <script>
+        //HTML-elementer:
+        const secPrint = document.getElementById("sec")
+        const btnStart = document.getElementById("start")
+        const btnStop = document.getElementById("stop")
+
+        //konfigurasjon:
+        let seconds = 0
+        let status = false
+
+        function counter() {
+            if(status === true){
+                seconds++
+                secPrint.innerHTML = seconds
+                setTimeout(counter, 1000)
+            }
+        }
+
+        function start(){
+            status = true
+            counter()
+            btnStart.disabled = true
+            btnStop.disabled = false
+        }
+
+        function stop(){
+            btnStart.disabled = false
+            status = false
+            btnStop.disabled = true
+        }
+
+        btnStart.addEventListener("click", start)
+
+        btnStop.addEventListener("click", function(){
+            stop()
+        })
+
+        document.addEventListener("keydown", function(event){
+            if(event.key = "s") {
+                start()
+            }
+            if(event.key === "e"){
+                stop()
+            }
+        })
+    </script>
+</body>
+</html>

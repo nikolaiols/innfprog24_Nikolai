@@ -40,22 +40,22 @@
                     <tr>
                         <td><img src="icons/variable.svg" alt="" /></td>
                         <td>Variabler</td>
-                        <td id="variable-tabel">0</td>
+                        <td>0</td>
                     </tr>
                     <tr>
                         <td><img src="icons/array.svg" alt="" /></td>
                         <td>Arrayer</td>
-                        <td id="array-tabel">1</span></td>
+                        <td>1</span></td>
                     </tr>
                     <tr>
                         <td><img src="icons/loop.svg" alt="" /></td>
                         <td>Løkker</td>
-                        <td id="loop-tabel">2</td>
+                        <td>2</td>
                     </tr>
                     <tr>
                         <td><img src="icons/function.svg" alt="" /></td>
                         <td>Funksjoner</td>
-                        <td id="function-tabel">1</td>
+                        <td>1</td>
                     </tr>
                 </table>
             </div>
@@ -75,53 +75,17 @@
     </main>
     <script>
         //PREPARE GAME CONFIG AND VARIABLES
-        const gameconfig = {
-            player: "Nikolai",
-            energy: 5,
-            points: 10,
-            duration: 130
-        }
         //TODO: config
-       document.getElementById("playerName").innerHTML = gameconfig.player
-       document.getElementById("energy").innerHTML = gameconfig.energy
-       document.getElementById("points").innerHTML = gameconfig.points
-       document.getElementById("duration").innerHTML = gameconfig.duration
+       
         //TODO: notebook
-        const notebook = {
-            variables: 3,
-            arrays: 2,
-            loops: 4,
-            functions: 7
-        }
         
 
         //TODO: print playerinfo to HTML
-        document.getElementById("variable-tabel").innerHTML = notebook.variables
-        document.getElementById("array-tabel").innerHTML = notebook.arrays
-        document.getElementById("loop-tabel").innerHTML = notebook.loops
-        document.getElementById("function-tabel").innerHTML = notebook.functions
+        
         //TODO: print notebook info to HTML
-        if(gameconfig.player === "Nikolai"){
-            document.getElementById("playerName").innerHTML = gameconfig.player
-        }else{
-            document.getElementById("playerName").innerHTML = "waiting for player..." 
-        }
-        //(BONUS) TODO: function for all prints
-        function updateStaticUI(){
-            //utskrift player info
-        document.getElementById("playerName").innerHTML = gameconfig.player
-       document.getElementById("energy").innerHTML = gameconfig.energy
-       document.getElementById("points").innerHTML = gameconfig.points
-       document.getElementById("duration").innerHTML = gameconfig.duration
-        //utskrift notatblokk
-        document.getElementById("variable-tabel").innerHTML = notebook.variables
-        document.getElementById("array-tabel").innerHTML = notebook.arrays
-        document.getElementById("loop-tabel").innerHTML = notebook.loops
-        document.getElementById("function-tabel").innerHTML = notebook.functions
-        }
-        updateStaticUI()
 
-        console.log(notebook)
+        //(BONUS) TODO: function for all prints
+        
     </script>
 </body>
 </html>

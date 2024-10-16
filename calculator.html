@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>karakterkalkulator</title>
+    <style>
+        body{
+            background: #ccc;
+            font-family: Helvetica;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            gap: 1rem;
+        }
+        input{
+            padding: 0.5rem;
+        }
+        button{
+            padding: 0.5rem;
+            background-color: #12cc15;
+        }
+        section{
+            display: flex;
+            justify-content: center;
+            background-color: #fff;
+        }
+        #showCaracter{
+            
+            font-size: 100px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    
+    <form>
+        <label>Poeng på oppgave 1</label>
+        <input id="poeng1" type="number" required>
+        
+        <label>Poeng på oppgave 2</label>
+        <input id="poeng2" type="number" required>
+       
+        <button onclick="calculate()">Regn ut karakter</button>
+
+    </form>
+    <section>
+        <h2>Din karakter: </h2>
+        <p id="showCaracter">0</p>
+    </section>
+
+
+    <script>
+
+        const MaksimaltPoengOppgave1 = 10
+        const MaksimaltPoengOppgave2 = 12
+        const grades = [
+            {grade: "F", treshold: 0},
+            {grade: "E", treshold: 25},
+            {grade: "D", treshold: 44},
+            {grade: "C", treshold: 68},
+            {grade: "B", treshold: 88},
+            {grade: "A", treshold: 100}
+            ]
+            
+            function calculate(){
+            //hente karaktertall i input
+            let PoengOppgave1 = document.getElementById("poeng1").value
+            let PoengOppgave2 = document.getElementById("poeng2").value
+
+            const result = (0.3 * (PoengOppgave1 / MaksimaltPoengOppgave1 * 100)) + (0.7 * (PoengOppgave2 / MaksimaltPoengOppgave2 * 100))
+            
+            let text = ""
+            if(result <= 0){
+                text = "F"
+            }
+            /*if(result <= treshold){
+                text = grade
+            }*/
+
+        }
+
+    
+
+
+    </script>
+
+
+</body>
+</html>

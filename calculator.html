@@ -40,12 +40,12 @@
     
     <form>
         <label>Poeng på oppgave 1</label>
-        <input id="poeng1" type="number" required>
+        <input id="poeng1" type="number" max="10" required>
         
         <label>Poeng på oppgave 2</label>
-        <input id="poeng2" type="number" required>
+        <input id="poeng2" type="number" max="12" required>
        
-        <button disabled id="btn" type="button" onclick="calculate()">Regn ut karakter</button>
+        <button id="btn" type="button" onclick="calculate()">Regn ut karakter</button>
 
     </form>
     <section>
@@ -67,11 +67,13 @@
             {grade: "A", treshold: 100}
             ]
             //disable knappen hvis feltene ikke er fylt ut
-            document.getElementById("btn").addEventListener("mouseover", ()=>{
+            document.getElementById("btn").addEventListener("click", ()=>{
                 if(document.getElementById("poeng1").value === "" || document.getElementById("poeng2").value === ""){
-                    document.getElementById("btn").disabled = true
+                alert("Begge feltene må fylles ut før du kan regne ut karakter.");
+                return;}})
+                    /* document.getElementById("btn").disabled = true
                 }else{document.getElementById("btn").disabled = false}
-            })
+            })*/
            
             
             function calculate(){

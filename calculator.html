@@ -45,12 +45,12 @@
         <label>Poeng på oppgave 2</label>
         <input id="poeng2" type="number" required>
        
-        <button onclick="calculate()">Regn ut karakter</button>
+        <button disabled id="btn" type="button" onclick="calculate()">Regn ut karakter</button>
 
     </form>
     <section>
         <h2>Din karakter: </h2>
-        <p id="showCaracter">0</p>
+        <p id="showCaracter"></p>
     </section>
 
 
@@ -66,23 +66,45 @@
             {grade: "B", treshold: 88},
             {grade: "A", treshold: 100}
             ]
+            //disable knappen hvis feltene ikke er fylt ut
+            document.getElementById("btn").addEventListener("mouseover", ()=>{
+                if(document.getElementById("poeng1").value === "" || document.getElementById("poeng2").value === ""){
+                    document.getElementById("btn").disabled = true
+                }else{document.getElementById("btn").disabled = false}
+            })
+           
             
             function calculate(){
+            
             //hente karaktertall i input
             let PoengOppgave1 = document.getElementById("poeng1").value
             let PoengOppgave2 = document.getElementById("poeng2").value
-
+    
             const result = (0.3 * (PoengOppgave1 / MaksimaltPoengOppgave1 * 100)) + (0.7 * (PoengOppgave2 / MaksimaltPoengOppgave2 * 100))
-            
-            let text = ""
-            if(result <= 0){
-                text = "F"
-            }
-            /*if(result <= treshold){
-                text = grade
-            }*/
+            const elementid = document.getElementById("showCaracter")
+            console.log(PoengOppgave1)
 
-        }
+                //her sammenlikner jeg resultatet jeg får med tresholden i objectet. så her er det viktig å velge en index å gå ut ifra
+                if(result < grades[1].treshold){
+                    elementid.innerHTML = grades[0].grade
+                }
+                else if(result < grades[2].treshold){
+                    elementid.innerHTML = grades[1].grade
+                }
+                else if(result < grades[3].treshold){
+                    elementid.innerHTML = grades[2].grade
+                }
+                else if(result < grades[4].treshold){
+                    elementid.innerHTML = grades[3].grade
+                }
+                else if(result < grades[5].treshold){
+                    elementid.innerHTML = grades[4].grade
+                }
+                else{
+                    elementid.innerHTML = grades[5].grade
+                }
+
+         }  
 
     
 

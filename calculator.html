@@ -19,6 +19,7 @@
         }
         input{
             padding: 0.5rem;
+            border-radius: 5px;
         }
         button{
             padding: 0.5rem;
@@ -66,14 +67,11 @@
             {grade: "B", treshold: 88},
             {grade: "A", treshold: 100}
             ]
-            //disable knappen hvis feltene ikke er fylt ut
+            //sender en alert hvis begge feltene ikke er fylt ut
             document.getElementById("btn").addEventListener("click", ()=>{
                 if(document.getElementById("poeng1").value === "" || document.getElementById("poeng2").value === ""){
                 alert("Begge feltene må fylles ut før du kan regne ut karakter.");
                 return;}})
-                    /* document.getElementById("btn").disabled = true
-                }else{document.getElementById("btn").disabled = false}
-            })*/
            
             
             function calculate(){

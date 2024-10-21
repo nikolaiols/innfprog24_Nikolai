@@ -64,12 +64,13 @@
         ctx.fillText("Nikolai", 300, 100)
         ctx.closePath()
 
-        //tegn et eksisterende bilde inn i canvas
-        const pumpkin = new Image()
+        //TEGN ET EKSISTERENDE BILDE INN I CANVAS
+        const pumpkin = new Image(128, 128)
         let pumpkinLoaded = false
-        pumpkin.onload = () => {pumpkinLoaded = true}
+        pumpkin.onload = () => { 
+            ctx.drawImage(pumpkin, 0, 0, 128, 128)
+        }
         pumpkin.src = "pumpkin.png"
-        pumpkinLoaded ? ctx.drawImage(pumpkin, 600, 50) : null
     </script>
 </body>
 </html>

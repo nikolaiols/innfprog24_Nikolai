@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas-animation cheatsheet</title>
+    <style>
+        body{
+            background: #cbcbcb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="anim-area"></canvas>
+
+
+    <script>
+        //canvas konfigurasjon:
+        const c = document.getElementById("anim-area")
+        c.width = 900
+        c.height = 600
+        const ctx = c.getContext("2d")
+
+
+        //RequestAnimationFrame: automatiser nye bildetegninger
+        const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame
+        
+        
+        //definerer startpunktet til sirkelen
+        const circle = {
+            x: 100,
+            y: 100,
+            r: 15
+        }
+
+        //Rekursiv funksjon som kaller seg selv avhengig av skjerm/nettleser den vises i
+        function frames(){
+            //tøm frame for ny opptegning 
+            ctx.clearRect(0,0, c.width, c.height)
+
+            //tegne en sirkel:
+            ctx.beginPath()
+            ctx.arc(circle.x, circle.y, circle.r, 0, 2 * Math.PI)
+            ctx.fill()
+            ctx.closePath()
+
+
+            if(circle.x < c.width - circle.r){
+            circle.x = circle.x + 5
+            }
+            if(circle.x === c.width - circle.r){
+                if(circle.y < c.height - circle.r){
+                circle.y = circle.y + 10
+                } else{
+                    circle.y = c.height - circle.r
+                }
+            }
+
+            console.log("requestAnimationFrame fungerer")
+            //rekursivt kall:
+            requestAnimationFrame(frames)
+        }
+        //kaller frames-funksjon en første gang:
+        frames()
+    </script>
+</body>
+</html>

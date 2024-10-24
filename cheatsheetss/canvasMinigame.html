@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas-minigame cheatsheet</title>
+    <style>
+        body{
+            background: #cbcbcb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="anim-area"></canvas>
+
+
+    <script>
+        //canvas konfigurasjon:
+        const c = document.getElementById("anim-area")
+        c.width = 900
+        c.height = 600
+        const ctx = c.getContext("2d")
+
+
+        //RequestAnimationFrame: automatiser nye bildetegninger
+        const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame
+        
+        //spillkonfigurasjon:
+        const game = {
+            speed: 3,
+            count: 0,
+        }
+        
+        //definerer startpunktet til helten
+        const hero = {
+            x: 100,
+            y: 100,
+            w: 15,
+            h: 15
+        }
+
+        // definerer gullfjellet:
+        const goldmountain = {
+            x: c.width / 2-25,
+            y: c.height /2-25,
+            w: 50,
+            h: 50,
+        }
+        //definerer variabler for å sjekke om en retning er aktiv
+        let up = false
+        let down = false
+        let right = false
+        let left = false
+
+        
+
+        //sjekk om en retning er aktivert med piltast
+        document.addEventListener("keydown", function(event){
+            if(event.key === "d" || event.key === "ArrowRight"){
+                right = true
+            }
+            if(event.key === "s" || event.key === "ArrowDown"){
+                down = true
+            }
+            if(event.key === "a" || event.key === "ArrowLeft"){
+                left = true
+            }
+            if(event.key === "w" || event.key === "ArrowUp"){
+                up = true
+            }
+            if(event.key === "h"){
+                game.speed = 10
+            }
+        })
+
+        document.addEventListener("keyup", function(event){
+            if(event.key === "d" || event.key === "ArrowRight"){
+                right = false
+            }
+            if(event.key === "s" || event.key === "ArrowDown"){
+                down = false
+            }
+            if(event.key === "a" || event.key === "ArrowLeft"){
+                left = false
+            }
+            if(event.key === "w" || event.key === "ArrowUp"){
+                up = false
+            }
+            if(event.key === "h"){
+                game.speed = 3
+            }
+        })
+
+        //tegne firkanter som vi kan gjennbruke:
+        function drawRect(x = 0, y = 0, w = 10, h = 10, color = "#000000"){
+            ctx.beginPath()
+            ctx.rect(x, y, w, h)
+            ctx.fillStyle = color
+            ctx.fill()
+            ctx.closePath()
+        }   
+        
+        // funksjon for randomisering: 
+        function randomMinMax(min, max){
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        //Rekursiv funksjon som kaller seg selv avhengig av skjerm/nettleser den vises i
+        function frames(){
+            //tøm frame for ny opptegning 
+            ctx.clearRect(0,0, c.width, c.height)
+
+            //tegne helten:
+           drawRect (hero.x, hero.y, hero.w, hero.h, "#6ea100")
+
+           //tegne hinder:
+            drawRect(goldmountain.x, goldmountain.y, goldmountain.w, goldmountain.h, "orange")
+            //tegner ut count:
+            ctx.font = "30px Arial"
+            ctx.fillStyle = "#000000"
+            ctx.fillText(game.count, 10, 60)
+            //sjekker etter bevegelse:
+            right ? hero.x = hero.x + game.speed : null
+
+            left ? hero.x = hero.x - game.speed : null
+            
+            up ? hero.y = hero.y - game.speed : null
+            
+            down ? hero.y = hero.y + game.speed : null
+
+            //sjekker om firkanten er utenfor canvas:
+            if(hero.x < 0){
+                hero.x = c.width
+            }
+            if(hero.x > c.width){
+                hero.x = 0
+            }
+            if(hero.y < 0){
+                hero.y = c.height
+            }
+            if(hero.y > c.height){
+                hero.y = 0
+            }
+
+            //sjekker om helten kolliderer med oransje firkant:
+            if(
+                hero.x + hero.w > goldmountain.x && 
+                hero.x < goldmountain.x + goldmountain.w && 
+                hero.y + hero.h > goldmountain.y &&
+                hero.y < goldmountain.y + goldmountain.h
+            ){
+                console.log(game.count)
+                hero.x = randomMinMax(0, c.width - hero.w)
+                hero.y = randomMinMax(0, c.height - hero.h)
+                game.count = game.count + 1
+            }
+
+            console.log("requestAnimationFrame fungerer")
+            //rekursivt kall:
+            requestAnimationFrame(frames)
+        }
+        //kaller frames-funksjon en første gang:
+        frames()
+    </script>
+</body>
+</html>

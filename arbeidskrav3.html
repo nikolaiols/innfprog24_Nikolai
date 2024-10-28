@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nb">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
         }
         input{
             padding: 0.5rem;
-            border-radius: 5px;
+            border-radius: 2.5px;
         }
         button{
             padding: 0.5rem;
@@ -41,10 +41,10 @@
     
     <form>
         <label>Poeng på oppgave 1</label>
-        <input id="poeng1" type="number" max="10" required>
+        <input id="poeng1" type="number" max="10" min="0" required>
         
         <label>Poeng på oppgave 2</label>
-        <input id="poeng2" type="number" max="12" required>
+        <input id="poeng2" type="number" max="12" min="0" required>
        
         <button id="btn" type="button" onclick="calculate()">Regn ut karakter</button>
 
@@ -71,8 +71,10 @@
             document.getElementById("btn").addEventListener("click", ()=>{
                 if(document.getElementById("poeng1").value === "" || document.getElementById("poeng2").value === ""){
                 alert("Begge feltene må fylles ut før du kan regne ut karakter.");
+                //hindrer at karakteren F vises
+                document.getElementById("showCaracter").innerHTML = "";
                 return;}})
-           
+                    
             
             function calculate(){
             

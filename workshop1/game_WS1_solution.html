@@ -31,7 +31,8 @@
         </nav>
     </header>
     <main>
-        
+        <canvas id="anim-area"></canvas>
+
         <section id="notebook">
             <div id="notebook-page">
                 
@@ -115,7 +116,7 @@
         }
 
         updateStaticUI()
-        //åpne og lukke notatblokk
+        //åpne og lukke notatblokk 
         function toggleVisibility(elementid){
             console.log("123")
             const element = document.getElementById(elementid)
@@ -156,6 +157,42 @@
             function updateConfigValue(element){
                 
             }
+
+            //oppretter et canvas
+             //canvas konfigurasjon:
+            const c = document.getElementById("anim-area")
+            c.width = 800
+            c.height = 600
+            const ctx = c.getContext("2d")
+
+            //pause knapp bakgrunn
+            ctx.beginPath()
+            ctx.rect(700, 580, 100, 25)
+            ctx.fillStyle = "#fff"
+            ctx.fill()
+            ctx.closePath()
+
+            //pauseknapp text
+            ctx.beginPath()
+            ctx.font = "13px Arial"
+            ctx.fillStyle = "#3c429b"
+            ctx.fillText("Press P to pause", 700, 593)
+            ctx.closePath()
+
+            //object for helten 
+            let fortran_config = {
+                x: 400,
+                y: 300,
+                speed: 3,
+            }
+
+            //tegne helten fortran:
+            const fortran = new Image(128, 128)
+            let fortranLoaded = false
+            fortran.onload = () => { 
+                ctx.drawImage(fortran, fortran_config.x, fortran_config.y, 25, 25)
+            }
+            fortran.src = "icons/fortran.png"
 
     </script>
 </body>

@@ -111,6 +111,12 @@
             y: canvas.height / 2
         }
 
+         //definerer variabler for å sjekke om en retning er aktiv
+        let up = false
+        let down = false
+        let right = false
+        let left = false
+
         
 
         //(BONUS) TODO: function for all prints
@@ -205,6 +211,19 @@
         function drawElements() {
             console.log("requestAnimationFrame kjører")
 
+            //tømmer canvas før hver opptegning:
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            //sjekker etter bevegelse:
+            right ? fortran.x = fortran.x + fortran.speed : null
+
+            left ? fortran.x = fortran.x - fortran.speed : null
+
+            up ? fortran.y = fortran.y - fortran.speed : null
+
+            down ? fortran.y = fortran.y + fortran.speed : null
+
+
             if(fortranLoaded === true) {
                 ctx.drawImage(fortranImage, fortran.x, fortran.y)
             }
@@ -241,6 +260,43 @@
 
         drawElements()
 
+       
+        //sjekk om en retning er aktivert med piltast
+        document.addEventListener("keydown", function(event){
+            if(event.key === "d" || event.key === "ArrowRight"){
+                right = true
+            }
+            if(event.key === "s" || event.key === "ArrowDown"){
+                down = true
+            }
+            if(event.key === "a" || event.key === "ArrowLeft"){
+                left = true
+            }
+            if(event.key === "w" || event.key === "ArrowUp"){
+                up = true
+            }
+            if(event.key === "h"){
+                fortran.speed = 10
+            }
+        })
+
+        document.addEventListener("keyup", function(event){
+            if(event.key === "d" || event.key === "ArrowRight"){
+                right = false
+            }
+            if(event.key === "s" || event.key === "ArrowDown"){
+                down = false
+            }
+            if(event.key === "a" || event.key === "ArrowLeft"){
+                left = false
+            }
+            if(event.key === "w" || event.key === "ArrowUp"){
+                up = false
+            }
+            if(event.key === "h"){
+                fortran.speed = 3
+            }
+        })
 
 
     </script>

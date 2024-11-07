@@ -161,6 +161,47 @@
                 toggleVisibility("info")
             }
         })
+            //sjekk om en retning er aktivert med piltast
+            document.addEventListener("keydown", function(event){
+            if(event.key === "d" || event.key === "ArrowRight"){
+                right = true
+            }
+            if(event.key === "s" || event.key === "ArrowDown"){
+                down = true
+            }
+            if(event.key === "a" || event.key === "ArrowLeft"){
+                left = true
+            }
+            if(event.key === "w" || event.key === "ArrowUp"){
+                up = true
+            }
+            if(event.key === "h"){
+                fortran.speed = 10
+            }
+            //
+            if(event.key === "p"){
+                gameConfig.gamePaused = !gameConfig.gamePaused
+            }
+        })
+
+        document.addEventListener("keyup", function(event){
+            if(event.key === "d" || event.key === "ArrowRight"){
+                right = false
+            }
+            if(event.key === "s" || event.key === "ArrowDown"){
+                down = false
+            }
+            if(event.key === "a" || event.key === "ArrowLeft"){
+                left = false
+            }
+            if(event.key === "w" || event.key === "ArrowUp"){
+                up = false
+            }
+            if(event.key === "h"){
+                fortran.speed = 3
+            }
+        })
+
         //WS2, Oppg 3:
         document.getElementById("notebookToggler").addEventListener("click", function() {
             toggleVisibility("notebook")
@@ -223,9 +264,10 @@
             console.log("requestAnimationFrame kjører")
 
             //tømmer canvas før hver opptegning:
-            /*ctx.clearRect(0, 0, canvas.width, canvas.height);*/
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             //sjekker etter bevegelse:
+            if(gameConfig.gamePaused === false){
             right ? fortran.x = fortran.x + fortran.speed : null
 
             left ? fortran.x = fortran.x - fortran.speed : null
@@ -238,7 +280,7 @@
             if(fortranLoaded === true) {
                 ctx.drawImage(fortranImage, fortran.x, fortran.y)
             }
-
+        }
             //WS3, Oppg 4.2: 
             if(gameConfig.gamePaused === true) {
                 ctx.beginPath()
@@ -270,45 +312,6 @@
         }
 
         drawElements()
-
-       
-        //sjekk om en retning er aktivert med piltast
-        document.addEventListener("keydown", function(event){
-            if(event.key === "d" || event.key === "ArrowRight"){
-                right = true
-            }
-            if(event.key === "s" || event.key === "ArrowDown"){
-                down = true
-            }
-            if(event.key === "a" || event.key === "ArrowLeft"){
-                left = true
-            }
-            if(event.key === "w" || event.key === "ArrowUp"){
-                up = true
-            }
-            if(event.key === "h"){
-                fortran.speed = 10
-            }
-        })
-
-        document.addEventListener("keyup", function(event){
-            if(event.key === "d" || event.key === "ArrowRight"){
-                right = false
-            }
-            if(event.key === "s" || event.key === "ArrowDown"){
-                down = false
-            }
-            if(event.key === "a" || event.key === "ArrowLeft"){
-                left = false
-            }
-            if(event.key === "w" || event.key === "ArrowUp"){
-                up = false
-            }
-            if(event.key === "h"){
-                fortran.speed = 3
-            }
-        })
-
 
     </script>
 </body>

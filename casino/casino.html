@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>casino</title>
+</head>
+<body>
+    
+    <p id="showNumber1">0</p>
+    <p id="showNumber2">0</p>
+    <p id="showNumber3">0</p>
+
+    <button id="btn">spin</button>
+
+    <script>
+    const id1 = document.getElementById("showNumber1")
+    const id2 = document.getElementById("showNumber2")
+    const id3 = document.getElementById("showNumber3")
+
+    const numbers = [
+    {
+     ace: "A",
+     multiplyer: 10   
+    },
+    {
+    king: "K",
+    multiplyer: 8
+    },
+    {
+    queen: "Q",
+    multiplyer: 6
+    },
+    {
+    jack: "J",
+    multiplyer: 4
+    },
+    {
+    ten: "10",
+    multiplyer: 2
+    },
+    {
+    nine: "9",
+    multiplyer: 1
+    },
+    ]
+
+    document.getElementById("btn").addEventListener("onclick", function(){
+        /*her skal jeg utføre en randomisering av objektet og printe dette til ptaggene*/
+        function randomMinMax(min, max){
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+        
+    })
+
+    
+
+
+    </script>
+</body>
+</html>
